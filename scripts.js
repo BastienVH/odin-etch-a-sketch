@@ -16,7 +16,7 @@ function drawGrid(num) {
     container.appendChild(box);
   }
   const boxes = document.querySelectorAll("div.box");
-  boxes.forEach(box => box.addEventListener("mouseover", applyColor));
+  boxes.forEach(box => box.addEventListener("mouseover", applyRandomColor));
 }
 
 function eraseGrid() {
@@ -25,7 +25,7 @@ function eraseGrid() {
   }
 }
 
-function applyColor(e) {
+function applyBlack(e) {
   e.target.style.backgroundColor = "black";
 }
 
@@ -33,4 +33,13 @@ function promptForSize() {
   num = prompt("How wide should the new grid be?");
   if (num < 1 || num > 100) promptForSize();
   drawGrid(num);
+}
+
+function applyRandomColor(e) {
+  randomColor = `rgb(${randomNum(255)}, ${randomNum(255)}, ${randomNum(255)})`;
+  e.target.style.backgroundColor = randomColor;
+}
+
+function randomNum(num) {
+  return Math.floor(Math.random()*num) + 1;
 }
