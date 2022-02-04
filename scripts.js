@@ -3,13 +3,8 @@
 const container = document.querySelector("div.container");
 drawGrid(16);
 
-// select each box
-// add a eventlistener to each box
-// on hover: change css to have background color black
-
-const boxes = document.querySelectorAll("div.box");
-console.log(boxes);
-boxes.forEach(box => box.addEventListener("mouseover", applyColor));
+const btn = document.getElementById("btnCreate");
+btn.addEventListener("click", promptForSize);
 
 function drawGrid(num) {
   eraseGrid();
@@ -21,6 +16,8 @@ function drawGrid(num) {
     box.classList.add("box");
     box.style.cssText = "border:1px solid black"
     container.appendChild(box);
+    const boxes = document.querySelectorAll("div.box");
+    boxes.forEach(box => box.addEventListener("mouseover", applyColor));
   }
 }
 
@@ -32,4 +29,9 @@ function eraseGrid() {
 
 function applyColor(e) {
   e.target.style.backgroundColor = "black";
+}
+
+function promptForSize() {
+  num = prompt("How wide should the new grid be?");
+  drawGrid(num);
 }
