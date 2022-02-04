@@ -12,7 +12,7 @@ function drawGrid(num) {
   for (let i = 0; i < num*num; i++) {
     box = document.createElement("div");
     box.classList.add("box");
-    box.style.cssText = "border:1px solid black"
+    // box.style.cssText = "border:1px solid black"
     container.appendChild(box);
   }
   const boxes = document.querySelectorAll("div.box");
