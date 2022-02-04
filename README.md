@@ -5,6 +5,6 @@ It will use HTML, CSS and vanilla JavaScript.
 CSS Grid will be used to create the sketch-grid.
 
 ## TODO
-- [] implement hover effect to change colour
+- [x] implement hover effect to change colour
 - [] add button to clea the grid and prompt for new dimensions of grid
 - [] fix grid borders (inner borders are now doubled)
