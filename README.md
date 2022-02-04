@@ -6,5 +6,5 @@ CSS Grid will be used to create the sketch-grid.
 
 ## TODO
 - [x] implement hover effect to change colour
-- [] add button to clea the grid and prompt for new dimensions of grid
+- [] add button to clear the grid and prompt for new dimensions of grid
 - [] fix grid borders (inner borders are now doubled)
