@@ -33,5 +33,6 @@ function applyColor(e) {
 
 function promptForSize() {
   num = prompt("How wide should the new grid be?");
+  if (num < 1 || num > 100) promptForSize();
   drawGrid(num);
 }
