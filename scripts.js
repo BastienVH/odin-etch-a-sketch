@@ -1,5 +1,3 @@
-// Function that draws a square of divs
-
 const container = document.querySelector("div.container");
 drawGrid(16);
 
@@ -42,7 +40,6 @@ function applyRandomColor(e) {
 }
 
 function applyGreyscale (e) {
-  // store current backgroundColor in variable
   let currentOpacity = parseFloat(e.target.style.opacity);
   if (currentOpacity < 1) {
     e.target.style.opacity = currentOpacity + 0.1;
