@@ -12,11 +12,12 @@ function drawGrid(num) {
   for (let i = 0; i < num*num; i++) {
     box = document.createElement("div");
     box.classList.add("box");
-    // box.style.cssText = "border:1px solid black"
+    box.style.backgroundColor = "black";
+    box.style.opacity = 0;
     container.appendChild(box);
   }
   const boxes = document.querySelectorAll("div.box");
-  boxes.forEach(box => box.addEventListener("mouseover", applyRandomColor));
+  boxes.forEach(box => box.addEventListener("mouseover", applyGreyscale));
 }
 
 function eraseGrid() {
@@ -38,6 +39,14 @@ function promptForSize() {
 function applyRandomColor(e) {
   randomColor = `rgb(${randomNum(255)}, ${randomNum(255)}, ${randomNum(255)})`;
   e.target.style.backgroundColor = randomColor;
+}
+
+function applyGreyscale (e) {
+  // store current backgroundColor in variable
+  let currentOpacity = parseFloat(e.target.style.opacity);
+  if (currentOpacity < 1) {
+    e.target.style.opacity = currentOpacity + 0.1;
+  }
 }
 
 function randomNum(num) {
