@@ -4,15 +4,31 @@ drawGrid(16); // draw starter grid
 // add event listener to container div
 container.addEventListener("mouseover", function() {
   let target = event.target.closest("div.box");
-  target.style.backgroundColor = getRandomColor();
+  // read which button is active
+  let activeButton = getActiveButton()
+  // set color according to active button
+  if (activeButton === "black") {
+    target.style.backgroundColor = "black";
+  } else if (activeButton === "random") {
+    target.style.backgroundColor = getRandomColor();
+  } else {
+    target.style.backgroundColor = "black";
+    box.style.opacity = 0;
+    let currentOpacity = parseFloat(target.style.opacity);
+    if (currentOpacity < 1) {
+      target.style.opacity = currentOpacity + 0.1;
+    }
+  }
+  
 });
 
 const btn = document.getElementById("btnCreate");
 btn.addEventListener("click", promptForSize);
 
 const colorBtns = document.querySelectorAll(".colorSelector");
-colorBtns.forEach(btn => btn.addEventListener("click", setColor));
-// add click event to buttons where calue gets passed to function setColor
+colorBtns.forEach(btn => btn.addEventListener("click", function () {
+  btn.classList.add("active");
+}));
 
 function drawGrid(num) {
   eraseGrid();
@@ -57,16 +73,7 @@ function randomNum(num) {
   return Math.floor(Math.random()*num) + 1;
 }
 
-function setColor(e) {
-  const boxes = document.querySelectorAll("div.box");
-  if (e.target.value === "black") {
-    console.log("You chose black");
-    boxes.forEach(box => box.addEventListener("mouseover", applyBlack));
-  } else if (e.target.value === "random") {
-    console.log("You chose random");
-    boxes.forEach(box => box.addEventListener("mouseover", applyRandomColor));
-  } else {
-    console.log("You chose greyscale");
-    boxes.forEach(box => box.addEventListener("mouseover", applyGreyscale));
-  }
+//function to return which button is set to active
+function getActiveButton() {
+  return document.querySelector("button.active").value;
 }
