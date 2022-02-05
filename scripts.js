@@ -1,5 +1,11 @@
 const container = document.querySelector("div.container");
-drawGrid(16);
+drawGrid(16); // draw starter grid
+
+// add event listener to container div
+container.addEventListener("mouseover", function() {
+  let target = event.target.closest("div.box");
+  target.style.backgroundColor = getRandomColor();
+});
 
 const btn = document.getElementById("btnCreate");
 btn.addEventListener("click", promptForSize);
@@ -10,12 +16,11 @@ function drawGrid(num) {
   for (let i = 0; i < num*num; i++) {
     box = document.createElement("div");
     box.classList.add("box");
-    box.style.backgroundColor = "black";
-    box.style.opacity = 0;
+    // box.style.backgroundColor = "black";
+    // box.style.opacity = 1;
     container.appendChild(box);
   }
   const boxes = document.querySelectorAll("div.box");
-  boxes.forEach(box => box.addEventListener("mouseover", applyGreyscale));
 }
 
 function eraseGrid() {
@@ -34,9 +39,8 @@ function promptForSize() {
   drawGrid(num);
 }
 
-function applyRandomColor(e) {
-  randomColor = `rgb(${randomNum(255)}, ${randomNum(255)}, ${randomNum(255)})`;
-  e.target.style.backgroundColor = randomColor;
+function getRandomColor() {
+  return `rgb(${randomNum(255)}, ${randomNum(255)}, ${randomNum(255)})`;
 }
 
 function applyGreyscale (e) {

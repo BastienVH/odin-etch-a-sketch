@@ -11,4 +11,4 @@ CSS Grid will be used to create the sketch-grid.
 - [ ] add a 3 button selector to choose between black, greyscale and random colours
 - [ ] refactor drawGrid function to apply correct function to hover event
 - [ ] style page so it looks prettier
-- [ ] look into event delegation
+- [x] look into event delegation
