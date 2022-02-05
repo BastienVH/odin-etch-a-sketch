@@ -8,12 +8,11 @@ container.addEventListener("mouseover", function() {
   let activeButton = getActiveButton()
   // set color according to active button
   if (activeButton === "black") {
-    target.style.backgroundColor = "black";
+    target.style.opacity = 1;
   } else if (activeButton === "random") {
     target.style.backgroundColor = getRandomColor();
+    target.style.opacity = 1;
   } else {
-    target.style.backgroundColor = "black";
-    box.style.opacity = 0;
     let currentOpacity = parseFloat(target.style.opacity);
     if (currentOpacity < 1) {
       target.style.opacity = currentOpacity + 0.1;
@@ -36,8 +35,8 @@ function drawGrid(num) {
   for (let i = 0; i < num*num; i++) {
     box = document.createElement("div");
     box.classList.add("box");
-    // box.style.backgroundColor = "black";
-    // box.style.opacity = 1;
+    box.style.backgroundColor = "black";
+    box.style.opacity = 0;
     container.appendChild(box);
   }
 }
