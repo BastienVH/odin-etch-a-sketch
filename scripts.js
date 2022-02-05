@@ -4,6 +4,10 @@ drawGrid(16);
 const btn = document.getElementById("btnCreate");
 btn.addEventListener("click", promptForSize);
 
+const colorBtns = document.querySelectorAll(".colorSelector");
+colorBtns.forEach(btn => btn.addEventListener("click", setColor));
+// add click event to buttons where calue gets passed to function setColor
+
 function drawGrid(num) {
   eraseGrid();
   container.style.cssText += `grid-template-columns:repeat(${num}, 1fr);grid-template-rows:repeat(${num}, 1fr)`;
@@ -14,8 +18,6 @@ function drawGrid(num) {
     box.style.opacity = 0;
     container.appendChild(box);
   }
-  const boxes = document.querySelectorAll("div.box");
-  boxes.forEach(box => box.addEventListener("mouseover", applyGreyscale));
 }
 
 function eraseGrid() {
@@ -48,4 +50,18 @@ function applyGreyscale (e) {
 
 function randomNum(num) {
   return Math.floor(Math.random()*num) + 1;
+}
+
+function setColor(e) {
+  const boxes = document.querySelectorAll("div.box");
+  if (e.target.value === "black") {
+    console.log("You chose black");
+    boxes.forEach(box => box.addEventListener("mouseover", applyBlack));
+  } else if (e.target.value === "random") {
+    console.log("You chose random");
+    boxes.forEach(box => box.addEventListener("mouseover", applyRandomColor));
+  } else {
+    console.log("You chose greyscale");
+    boxes.forEach(box => box.addEventListener("mouseover", applyGreyscale));
+  }
 }
