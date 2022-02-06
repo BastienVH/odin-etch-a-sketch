@@ -26,6 +26,10 @@ btn.addEventListener("click", promptForSize);
 
 const colorBtns = document.querySelectorAll(".colorSelector");
 colorBtns.forEach(btn => btn.addEventListener("click", function () {
+  // remove active class from all buttons
+  let currentActiveBtn = document.querySelector("button.active");
+  currentActiveBtn.classList.remove("active");
+  // only add active class to
   btn.classList.add("active");
 }));
 
