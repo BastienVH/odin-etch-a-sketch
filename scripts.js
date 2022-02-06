@@ -4,8 +4,9 @@ drawGrid(16); // draw starter grid
 // add event listener to container div
 container.addEventListener("mouseover", function() {
   let target = event.target.closest("div.box");
+  if (!target) return; //if no box is targetted, return
   // read which button is active
-  let activeButton = getActiveButton()
+  let activeButton = getActiveButton();
   // set color according to active button
   if (activeButton === "black") {
     target.style.opacity = 1;
