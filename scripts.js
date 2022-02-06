@@ -5,15 +5,16 @@ drawGrid(16); // draw starter grid
 container.addEventListener("mouseover", function() {
   let target = event.target.closest("div.box");
   if (!target) return; //if no box is targetted, return
-  // read which button is active
+
   let activeButton = getActiveButton();
-  // set color according to active button
   if (activeButton === "black") {
+    target.style.backgroundColor = "black";
     target.style.opacity = 1;
   } else if (activeButton === "random") {
     target.style.backgroundColor = getRandomColor();
     target.style.opacity = 1;
   } else {
+    target.style.backgroundColor = "black";
     let currentOpacity = parseFloat(target.style.opacity);
     if (currentOpacity < 1) {
       target.style.opacity = currentOpacity + 0.1;
@@ -26,11 +27,11 @@ const btn = document.getElementById("btnCreate");
 btn.addEventListener("click", promptForSize);
 
 const colorBtns = document.querySelectorAll(".colorSelector");
+
+// add active class to clicked button
 colorBtns.forEach(btn => btn.addEventListener("click", function () {
-  // remove active class from all buttons
   let currentActiveBtn = document.querySelector("button.active");
   currentActiveBtn.classList.remove("active");
-  // only add active class to
   btn.classList.add("active");
 }));
 
@@ -52,10 +53,6 @@ function eraseGrid() {
   }
 }
 
-function applyBlack(e) {
-  e.target.style.backgroundColor = "black";
-}
-
 function promptForSize() {
   num = prompt("How wide should the new grid be?");
   if (num < 1 || num > 100) promptForSize();
@@ -64,13 +61,6 @@ function promptForSize() {
 
 function getRandomColor() {
   return `rgb(${randomNum(255)}, ${randomNum(255)}, ${randomNum(255)})`;
-}
-
-function applyGreyscale (e) {
-  let currentOpacity = parseFloat(e.target.style.opacity);
-  if (currentOpacity < 1) {
-    e.target.style.opacity = currentOpacity + 0.1;
-  }
 }
 
 function randomNum(num) {
