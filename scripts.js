@@ -2,7 +2,7 @@ const container = document.querySelector("div.container");
 drawGrid(16); // draw starter grid
 
 // add event listener to container div
-container.addEventListener("mouseover", function(e) {
+container.addEventListener("mouseover", (e) => {
   let target = event.target.closest("div.box");
   if (!target) return; //if no box is targetted, return
 
@@ -29,7 +29,7 @@ btn.addEventListener("click", promptForSize);
 const colorBtns = document.querySelectorAll(".colorSelector");
 
 // add active class to clicked button
-colorBtns.forEach(btn => btn.addEventListener("click", function () {
+colorBtns.forEach(btn => btn.addEventListener("click", () => {
   let currentActiveBtn = document.querySelector("button.active");
   currentActiveBtn.classList.remove("active");
   btn.classList.add("active");
