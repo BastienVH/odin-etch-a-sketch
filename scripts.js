@@ -2,7 +2,7 @@ const container = document.querySelector("div.container");
 drawGrid(16); // draw starter grid
 
 // add event listener to container div
-container.addEventListener("mouseover", function() {
+container.addEventListener("mouseover", function(e) {
   let target = event.target.closest("div.box");
   if (!target) return; //if no box is targetted, return
 
